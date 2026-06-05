@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="¿Buscas un corte con degradado o barboterapia en Escalona? Barber Shop El Castillo es la peluquería y barbería especializada en degradados, corte y barba, cejas y lavado. ¡Reserva online!">
+  <meta name="keywords" content="barberia escalona, peluqueria escalona, barberia escalona del alberche, corte caballero escalona, degradados, corte y barba, cejas, lavado, barber shop el castillo">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://barbershopelcastillo.com/">
+  <meta property="og:title" content="Barber Shop El Castillo | Peluquería y Barbería en Escalona del Alberche">
+  <meta property="og:description" content="Especialistas en cortes degradados, barba, cejas y lavado. Define tu estilo en Barber Shop El Castillo. ¡Reserva tu cita hoy mismo!">
+  <meta property="og:image" content="assets/hero_haircut.png">
+
+  <title>Barber Shop El Castillo | Peluquería y Barbería en Escalona del Alberche</title>
+  
+  <!-- Favicon placeholder (SVG inline) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✂️</text></svg>">
+
+  <!-- Estilos principales -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ==========================================
+       BARRA DE NAVEGACIÓN
+       ========================================== -->
+  <header class="header" id="mainHeader">
+    <div class="container nav-container">
+      <a href="#inicio" class="logo" id="logoLink">
+        <span>BARBER SHOP</span> EL CASTILLO
+        <div class="logo-dot"></div>
+      </a>
+      
+      <nav aria-label="Navegación principal">
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#inicio" class="nav-link active" id="navLinkInicio">Inicio</a></li>
+          <li><a href="#servicios" class="nav-link" id="navLinkServicios">Servicios</a></li>
+          <li><a href="#galeria" class="nav-link" id="navLinkGaleria">Galería</a></li>
+          <li><a href="#reservar" class="nav-link" id="navLinkReservar">Reservar</a></li>
+          <li><a href="#conocenos" class="nav-link" id="navLinkConocenos">The Crew</a></li>
+          <li><a href="#contacto" class="nav-link" id="navLinkContacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <button class="hamburger" id="hamburgerMenu" aria-label="Abrir menú de navegación" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================
+         SECCIÓN HERO (PORTADA)
+         ========================================== -->
+    <section id="inicio" class="hero" aria-label="Portada de Barber Shop El Castillo">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="tagline">
+            <span class="tagline-pulse"></span>
+            Gran Inauguración en Escalona del Alberche
+          </div>
+          <h1 class="hero-title glow-text">Estilo clásico y moderno.<br><span class="gradient-text">Barber Shop El Castillo</span></h1>
+          <p class="hero-description">Especialistas en degradados impecables, arreglo de barba, cejas, lavado, color y permanente. La barbería de confianza junto a La Despensa.</p>
+          <div class="hero-actions">
+            <a href="#reservar" class="btn btn-primary" id="heroBtnReservar">
+              Reservar Cita Online
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            </a>
+            <a href="#servicios" class="btn btn-secondary" id="heroBtnServicios">Ver Servicios</a>
+          </div>
+        </div>
+        
+        <div class="hero-image-wrapper">
+          <div class="hero-image-glow"></div>
+          <div class="hero-image-frame">
+            <img src="assets/hero_haircut.png" alt="Joven con corte moderno fade en Escalona del Alberche" loading="eager">
+          </div>
+          
+          <div class="hero-badge">
+            <div class="hero-badge-icon">🔥</div>
+            <div class="hero-badge-text">
+              <p>Top Tendencias</p>
+              <p>Mid-Fade & Texturizados</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECCIÓN SERVICIOS
+         ========================================== -->
+    <section id="servicios" class="section-padding" aria-label="Nuestros Servicios">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="glow-text">Cortes & Estilos <span class="gradient-text">El Castillo</span></h2>
+          <p>Nuestros servicios de peluquería y barbería con la mejor calidad y precios inmejorables.</p>
+        </div>
+
+        <div class="services-tabs">
+          <button class="tab-btn active" id="tabAll" data-filter="all">Todos</button>
+          <button class="tab-btn" id="tabCortes" data-filter="cortes">Cortes y Barba</button>
+          <button class="tab-btn" id="tabOtros" data-filter="otros">Lavado y Cejas</button>
+          <button class="tab-btn" id="tabEspeciales" data-filter="especiales">Química y Color</button>
+        </div>
+
+        <div class="services-grid" id="servicesGrid">
+          <!-- Cortes -->
+          <div class="glass-card service-card" data-category="cortes">
+            <div class="service-card-top">
+              <span class="service-icon" role="img" aria-label="Tijeras">💈</span>
+              <h3 class="service-title">Corte con Degradado</h3>
+              <p class="service-desc">Degradado profesional impecable y definido a máquina, navaja y tijera, adaptado al estilo que busques.</p>
+            </div>
+            <div class="service-card-bottom">
+              <div class="service-price">10<span>€</span></div>
+            </div>
+          </div>
+
+          <div class="glass-card service-card" data-category="cortes">
+            <div class="service-card-top">
+              <span class="service-icon" role="img" aria-label="Corte y Barba">✂️</span>
+              <h3 class="service-title">Corte más Barba</h3>
+              <p class="service-desc">Servicio integral de corte de pelo con arreglo y perfilado de barba con acabado tradicional a navaja.</p>
+            </div>
+            <div class="service-card-bottom">
+              <div class="service-price">15<span>€</span></div>
+            </div>
+          </div>
+
+          <!-- Lavado y Cejas -->
+          <div class="glass-card service-card" data-category="otros">
+            <div class="service-card-top">
+              <span class="service-icon" role="img" aria-label="Cejas">👀</span>
+              <h3 class="service-title">Perfilado de Cejas</h3>
+              <p class="service-desc">Arreglo y perfilado preciso de cejas con navaja para conseguir una mirada limpia y marcada.</p>
+            </div>
+            <div class="service-card-bottom">
+              <div class="service-price">2<span>€</span></div>
+            </div>
+          </div>
+
+          <div class="glass-card service-card" data-category="otros">
+            <div class="service-card-top">
+              <span class="service-icon" role="img" aria-label="Lavado">🧴</span>
+              <h3 class="service-title">Lavado</h3>
+              <p class="service-desc">Lavado de cabello relajante con champús específicos que eliminan impurezas y refrescan el cuero cabelludo.</p>
+            </div>
+            <div class="service-card-bottom">
+              <div class="service-price">3<span>€</span></div>
+            </div>
+          </div>
+
+          <!-- Química y Color -->
+          <div class="glass-card service-card" data-category="especiales">
+            <div class="service-card-top">
+              <span class="service-icon" role="img" aria-label="Mechas">🎨</span>
+              <h3 class="service-title">Mechas</h3>
+              <p class="service-desc">Aclarado parcial del cabello con técnicas modernas de mechas para aportar brillo, volumen visual y estilo.</p>
+            </div>
+            <div class="service-card-bottom">
+              <div class="service-price">20<span>€</span></div>
+            </div>
+          </div>
+
+          <div class="glass-card service-card" data-category="especiales">
+            <div class="service-card-top">
+              <span class="service-icon" role="img" aria-label="Tinte">🧪</span>
+              <h3 class="service-title">Tinte al Gusto</h3>
+              <p class="service-desc">Teñimos tu pelo del color que quieras: tonos clásicos, platinados o colores fantasía de alta cobertura.</p>
+            </div>
+            <div class="service-card-bottom">
+              <div class="service-price">25<span>€</span></div>
+            </div>
+          </div>
+
+          <div class="glass-card service-card" data-category="especiales">
+            <div class="service-card-top">
+              <span class="service-icon" role="img" aria-label="Rizos">🌀</span>
+              <h3 class="service-title">Permanente (Rizos)</h3>
+              <p class="service-desc">Moldeado profesional del cabello para conseguir unos rizos u ondas naturales y duraderos con volumen.</p>
+            </div>
+            <div class="service-card-bottom">
+              <div class="service-price">30<span>€</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CALCULADORA DE PRECIOS INTERACTIVA -->
+        <div class="glass-card calculator-box">
+          <div class="section-header" style="margin-bottom: 2.5rem; text-align: left;">
+            <h3 class="glow-text" style="font-size: 1.8rem;"><span class="gradient-text">Calculadora</span> de Estilo</h3>
+            <p style="margin: 0; max-width: 100%;">Selecciona los servicios que te interesan y mira tu presupuesto en tiempo real.</p>
+          </div>
+          
+          <div class="calc-grid">
+            <div class="calc-list" id="calcList">
+              <div class="calc-item" data-price="10" data-id="degradado">
+                <div class="calc-info">
+                  <div class="calc-checkbox">
+                    <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>
+                  </div>
+                  <span class="calc-name">Corte con Degradado</span>
+                </div>
+                <span class="calc-price">10 €</span>
+              </div>
+              
+              <div class="calc-item" data-price="15" data-id="barba">
+                <div class="calc-info">
+                  <div class="calc-checkbox">
+                    <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>
+                  </div>
+                  <span class="calc-name">Corte más Barba</span>
+                </div>
+                <span class="calc-price">15 €</span>
+              </div>
+              
+              <div class="calc-item" data-price="2" data-id="cejas">
+                <div class="calc-info">
+                  <div class="calc-checkbox">
+                    <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>
+                  </div>
+                  <span class="calc-name">Perfilado de Cejas</span>
+                </div>
+                <span class="calc-price">2 €</span>
+              </div>
+              
+              <div class="calc-item" data-price="3" data-id="lavado">
+                <div class="calc-info">
+                  <div class="calc-checkbox">
+                    <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>
+                  </div>
+                  <span class="calc-name">Lavado</span>
+                </div>
+                <span class="calc-price">3 €</span>
+              </div>
+              
+              <div class="calc-item" data-price="20" data-id="mechas">
+                <div class="calc-info">
+                  <div class="calc-checkbox">
+                    <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>
+                  </div>
+                  <span class="calc-name">Mechas</span>
+                </div>
+                <span class="calc-price">20 €</span>
+              </div>
+              
+              <div class="calc-item" data-price="25" data-id="tinte">
+                <div class="calc-info">
+                  <div class="calc-checkbox">
+                    <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>
+                  </div>
+                  <span class="calc-name">Tinte al Gusto</span>
+                </div>
+                <span class="calc-price">25 €</span>
+              </div>
+              
+              <div class="calc-item" data-price="30" data-id="rizos">
+                <div class="calc-info">
+                  <div class="calc-checkbox">
+                    <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>
+                  </div>
+                  <span class="calc-name">Permanente (Rizos)</span>
+                </div>
+                <span class="calc-price">30 €</span>
+              </div>
+            </div>
+
+            <div class="calc-summary">
+              <h3>Tu Presupuesto Estimado</h3>
+              <p>Precios transparentes sin sorpresas de última hora</p>
+              <div class="calc-total" id="calcTotal">0 €</div>
+              <div class="calc-selected-count" id="calcCount">0 servicios seleccionados</div>
+              <button class="btn btn-primary" id="calcBookBtn" style="width: 100%;">
+                Reservar Estos Servicios
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECCIÓN GALERÍA
+         ========================================== -->
+    <section id="galeria" class="section-padding" aria-label="Galería de trabajos">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="glow-text">Cortes que <span class="gradient-text">Hablan por ti</span></h2>
+          <p>Echa un vistazo a los últimos estilos que se han llevado los chavales de Escalona y alrededores.</p>
+        </div>
+
+        <div class="gallery-grid" id="galleryGrid">
+          <article class="gallery-card">
+            <img src="assets/hero_haircut.png" alt="Corte Skin Fade con peinado texturizado arriba" class="gallery-image" loading="lazy">
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Degradados</span>
+              <h3 class="gallery-card-title">Mid Skin Fade</h3>
+              <p class="gallery-card-desc">Degradado medio perfecto con acabado natural texturizado.</p>
+            </div>
+          </article>
+
+          <article class="gallery-card">
+            <img src="assets/creative_color.png" alt="Cabello corto texturizado con tinte fantasía rosa y platino" class="gallery-image" loading="lazy">
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Color Fantasía</span>
+              <h3 class="gallery-card-title">Textured Neon Pink</h3>
+              <p class="gallery-card-desc">Decoloración platina con reflejos neón rosa en corte crop.</p>
+            </div>
+          </article>
+
+          <article class="gallery-card">
+            <img src="assets/hair_design.png" alt="Corte degradado con diseño rapado de rayo geométrico" class="gallery-image" loading="lazy">
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Hair Tattoo</span>
+              <h3 class="gallery-card-title">Geometric Lines</h3>
+              <p class="gallery-card-desc">Detalle rapado en rayo sobre degradado limpio.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECCIÓN DE RESERVAS (WIDGET PASO A PASO)
+         ========================================== -->
+    <section id="reservar" class="section-padding booking-section" aria-label="Reserva de citas">
+      <div class="container">
+        <div class="booking-wrapper">
+          <div class="section-header">
+            <h2 class="glow-text">Pide tu <span class="gradient-text">Cita en 2 Minutos</span></h2>
+            <p>Selecciona tus preferencias y reserva tu hueco sin llamadas ni esperas molestos.</p>
+          </div>
+
+          <!-- CONTENEDOR PRINCIPAL DEL ASISTENTE -->
+          <div class="glass-card booking-card" id="bookingCard">
+            <!-- Indicadores de Paso -->
+            <div class="booking-steps">
+              <div class="step-indicator active" data-step="1">
+                <div class="step-number">1</div>
+                <span class="step-label">Servicios</span>
+              </div>
+              <div class="step-indicator" data-step="2">
+                <div class="step-number">2</div>
+                <span class="step-label">Fecha y Profesional</span>
+              </div>
+              <div class="step-indicator" data-step="3">
+                <div class="step-number">3</div>
+                <span class="step-label">Tus Datos</span>
+              </div>
+            </div>
+
+            <!-- Formularios de los pasos -->
+            <form id="bookingForm" novalidate>
+              
+              <!-- PASO 1: Selección de Servicios -->
+              <div class="booking-step-content active" data-step="1" id="step1Content">
+                <h3 style="margin-bottom: 1.5rem; font-size: 1.4rem;">¿Qué nos hacemos hoy?</h3>
+                <div class="booking-services-selection">
+                  
+                  <div class="booking-service-item" data-id="degradado" data-price="10" data-name="Corte con Degradado" data-duration="30 min">
+                    <div class="bsi-left">
+                      <span class="bsi-name">Corte con Degradado</span>
+                      <span class="bsi-duration">⏱️ 30 min</span>
+                    </div>
+                    <span class="bsi-price">10 €</span>
+                  </div>
+
+                  <div class="booking-service-item" data-id="barba" data-price="15" data-name="Corte más Barba" data-duration="45 min">
+                    <div class="bsi-left">
+                      <span class="bsi-name">Corte más Barba</span>
+                      <span class="bsi-duration">⏱️ 45 min</span>
+                    </div>
+                    <span class="bsi-price">15 €</span>
+                  </div>
+
+                  <div class="booking-service-item" data-id="cejas" data-price="2" data-name="Perfilado de Cejas" data-duration="15 min">
+                    <div class="bsi-left">
+                      <span class="bsi-name">Perfilado de Cejas</span>
+                      <span class="bsi-duration">⏱️ 15 min</span>
+                    </div>
+                    <span class="bsi-price">2 €</span>
+                  </div>
+
+                  <div class="booking-service-item" data-id="lavado" data-price="3" data-name="Lavado" data-duration="15 min">
+                    <div class="bsi-left">
+                      <span class="bsi-name">Lavado</span>
+                      <span class="bsi-duration">⏱️ 15 min</span>
+                    </div>
+                    <span class="bsi-price">3 €</span>
+                  </div>
+
+                  <div class="booking-service-item" data-id="mechas" data-price="20" data-name="Mechas" data-duration="60 min">
+                    <div class="bsi-left">
+                      <span class="bsi-name">Mechas</span>
+                      <span class="bsi-duration">⏱️ 60 min</span>
+                    </div>
+                    <span class="bsi-price">20 €</span>
+                  </div>
+
+                  <div class="booking-service-item" data-id="tinte" data-price="25" data-name="Tinte al Gusto" data-duration="90 min">
+                    <div class="bsi-left">
+                      <span class="bsi-name">Tinte al Gusto</span>
+                      <span class="bsi-duration">⏱️ 90 min</span>
+                    </div>
+                    <span class="bsi-price">25 €</span>
+                  </div>
+
+                  <div class="booking-service-item" data-id="rizos" data-price="30" data-name="Permanente (Rizos)" data-duration="90 min">
+                    <div class="bsi-left">
+                      <span class="bsi-name">Permanente (Rizos)</span>
+                      <span class="bsi-duration">⏱️ 90 min</span>
+                    </div>
+                    <span class="bsi-price">30 €</span>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- PASO 2: Estilistas y Fecha/Hora -->
+              <div class="booking-step-content" data-step="2" id="step2Content">
+                <h3 style="margin-bottom: 1.5rem; font-size: 1.4rem;">¿Con quién y cuándo?</h3>
+                
+                <div class="booking-dateTime-grid">
+                  <!-- Barberos -->
+                  <div class="barber-selection">
+                    <h4 style="font-size: 1rem; color: var(--text-muted);">Elige tu Profesional:</h4>
+                    
+                    <div class="barber-card selected" data-barber="Alex">
+                      <img src="assets/hero_haircut.png" alt="Álex" class="barber-img">
+                      <div class="barber-info">
+                        <h4>Álex - Especialista en Degradados</h4>
+                        <p>Rey de los fades y diseños modernos</p>
+                      </div>
+                    </div>
+
+                    <div class="barber-card" data-barber="Sofia">
+                      <!-- Usamos el avatar de color fantasía ya generado -->
+                      <img src="assets/creative_color.png" alt="Sofía" class="barber-img">
+                      <div class="barber-info">
+                        <h4>Sofía - Experta en Color</h4>
+                        <p>Especialista en tintes fantasía y textura</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Fecha -->
+                  <div class="date-time-inputs">
+                    <div class="input-group">
+                      <label for="bookingDate">Selecciona el Día:</label>
+                      <input type="date" id="bookingDate" class="form-control" min="2026-06-03">
+                    </div>
+
+                    <div class="input-group">
+                      <label>Elige una Hora Disponible:</label>
+                      <div class="time-slots" id="timeSlotsContainer">
+                        <div class="time-slot-btn" data-time="10:00">10:00</div>
+                        <div class="time-slot-btn" data-time="11:00">11:00</div>
+                        <div class="time-slot-btn" data-time="12:30">12:30</div>
+                        <div class="time-slot-btn" data-time="16:00">16:00</div>
+                        <div class="time-slot-btn" data-time="17:30">17:30</div>
+                        <div class="time-slot-btn" data-time="19:00">19:00</div>
+                      </div>
+                      <input type="hidden" id="selectedTime" name="selectedTime">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- PASO 3: Datos de Contacto y Confirmación -->
+              <div class="booking-step-content" data-step="3" id="step3Content">
+                <h3 style="margin-bottom: 1.5rem; font-size: 1.4rem;">Datos de Contacto y Resumen</h3>
+                
+                <div class="booking-form-fields">
+                  <div class="input-group">
+                    <label for="clientName">Nombre y Apellidos *</label>
+                    <input type="text" id="clientName" class="form-control" placeholder="Escribe tu nombre completo" required>
+                  </div>
+                  
+                  <div class="input-group">
+                    <label for="clientPhone">Teléfono Móvil *</label>
+                    <input type="tel" id="clientPhone" class="form-control" placeholder="Ej: 600 123 456" required>
+                  </div>
+
+                  <div class="input-group input-group-full">
+                    <label for="clientEmail">Email (opcional)</label>
+                    <input type="email" id="clientEmail" class="form-control" placeholder="Ej: tuemail@gmail.com">
+                  </div>
+                </div>
+
+                <!-- Resumen en vivo -->
+                <div class="booking-details-summary">
+                  <h4>Resumen de la Cita</h4>
+                  <div id="summaryRowsContainer">
+                    <div class="summary-row">
+                      <span class="summary-label">Servicios:</span>
+                      <span class="summary-val" id="sumServices">Ninguno</span>
+                    </div>
+                    <div class="summary-row">
+                      <span class="summary-label">Profesional:</span>
+                      <span class="summary-val" id="sumBarber">Álex</span>
+                    </div>
+                    <div class="summary-row">
+                      <span class="summary-label">Día y Hora:</span>
+                      <span class="summary-val" id="sumDateTime">No seleccionado</span>
+                    </div>
+                    <div class="summary-row">
+                      <span class="summary-label">Total a pagar en local:</span>
+                      <span class="summary-val" id="sumTotal">0 €</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Botones del Asistente -->
+              <div class="booking-footer" id="bookingFooter">
+                <button type="button" class="btn btn-secondary" id="btnPrevStep" style="visibility: hidden;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                  Atrás
+                </button>
+                <button type="button" class="btn btn-primary" id="btnNextStep">
+                  Siguiente
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+              </div>
+
+            </form>
+
+            <!-- CONTENIDO DE ÉXITO (INICIALMENTE OCULTO) -->
+            <div class="booking-success" id="bookingSuccess" style="display: none;">
+              <div class="success-icon">✓</div>
+              <h3>¡Cita Confirmada!</h3>
+              <p>Tu cita se ha agendado correctamente en Barber Shop El Castillo. Guarda tu ticket o revisa tu WhatsApp/SMS en unos minutos para el recordatorio.</p>
+              
+              <div class="ticket-box">
+                <div class="ticket-line">
+                  <span>Código de Cita:</span>
+                  <strong style="color: var(--secondary-neon);" id="ticketCode">#CASTILLO-5489</strong>
+                </div>
+                <div class="ticket-line">
+                  <span>Servicio(s):</span>
+                  <span id="ticketServices">Corte con Degradado</span>
+                </div>
+                <div class="ticket-line">
+                  <span>Profesional:</span>
+                  <span id="ticketBarber">Álex</span>
+                </div>
+                <div class="ticket-line">
+                  <span>Día y Hora:</span>
+                  <strong id="ticketDateTime">05 de Junio, 16:00h</strong>
+                </div>
+                <div class="ticket-line">
+                  <span>Cliente:</span>
+                  <span id="ticketClient">Nombre</span>
+                </div>
+                <div class="ticket-line">
+                  <span>Total en Local:</span>
+                  <strong style="color: var(--primary-neon); font-size: 1.1rem;" id="ticketTotal">10 €</strong>
+                </div>
+              </div>
+
+              <button class="btn btn-primary" id="btnResetBooking">Reservar Otra Cita</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECCIÓN THE CREW (NOSOTROS)
+         ========================================== -->
+    <section id="conocenos" class="section-padding" aria-label="Acerca de Barber Shop El Castillo">
+      <div class="container about-grid">
+        <div class="about-content">
+          <div class="tagline">
+            <span class="tagline-pulse"></span>
+            El Concepto El Castillo
+          </div>
+          <h2 class="glow-text" style="font-size: 2.5rem; margin-bottom: 1.5rem;">Cultura de Barrio,<br><span class="gradient-text">Estilo Clásico y Moderno</span></h2>
+          <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Barber Shop El Castillo nació en Escalona del Alberche con una misión clara: ofrecer los mejores cortes, afeitados y arreglos de barba tradicionales y modernos a los vecinos del pueblo y alrededores.</p>
+          <p style="color: var(--text-muted); margin-bottom: 2rem;">Somos una barbería donde se respira profesionalidad, buen rollo y atención meticulosa al detalle. Cada servicio de corte, afeitado, tinte o permanente se realiza cuidando al máximo la salud de tu cabello y adaptándonos a tus preferencias.</p>
+          
+          <div class="about-features">
+            <div class="about-feature-item">
+              <div class="afi-icon">⭐</div>
+              <div class="afi-text">
+                <h4>Detalle e Innovación</h4>
+                <p>Nos formamos constantemente en las mejores academias de Madrid para traerte lo último en texturas, mullets y peinados desenfadados.</p>
+              </div>
+            </div>
+            <div class="about-feature-item">
+              <div class="afi-icon">🛡️</div>
+              <div class="afi-text">
+                <h4>Productos Premium</h4>
+                <p>Cuidamos tu cuero cabelludo y piel. Usamos ceras, tintes y champús orgánicos y específicos para caballeros y texturas complejas.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="crew-grid">
+          <article class="crew-card">
+            <div class="crew-card-img-wrapper">
+              <img src="assets/hero_haircut.png" alt="Álex Barber" loading="lazy">
+            </div>
+            <h3>Álex</h3>
+            <p>Fundador & Barbero Master</p>
+          </article>
+
+          <article class="crew-card">
+            <div class="crew-card-img-wrapper">
+              <!-- Reutilizamos el asset de color fantasía -->
+              <img src="assets/creative_color.png" alt="Sofía Estilista" loading="lazy">
+            </div>
+            <h3>Sofía</h3>
+            <p>Especialista en Color Fantasía & Textura</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECCIÓN RESEÑAS
+         ========================================== -->
+    <section class="section-padding reviews-section" aria-label="Reseñas de clientes">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="glow-text">Opiniones de <span class="gradient-text">Nuestra Tribu</span></h2>
+          <p>Mira lo que dicen los chicos de la zona que ya se han pasado por el estudio.</p>
+        </div>
+
+        <div class="reviews-carousel-wrapper">
+          <div class="reviews-carousel-track" id="reviewsTrack">
+            
+            <div class="glass-card review-slide-card">
+              <div>
+                <div class="review-rating" aria-label="Calificación 5 de 5 estrellas">
+                  ★ ★ ★ ★ ★
+                </div>
+                <p class="review-text">"El mejor degradado de la zona de Toledo. Álex es un crack, cuida cada línea y te deja el corte perfecto. El ambiente es de 10."</p>
+              </div>
+              <div class="review-user-info">
+                <div class="review-avatar">JM</div>
+                <div class="review-user-details">
+                  <h4>Javi Martínez</h4>
+                  <p>Escalona</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="glass-card review-slide-card">
+              <div>
+                <div class="review-rating" aria-label="Calificación 5 de 5 estrellas">
+                  ★ ★ ★ ★ ★
+                </div>
+                <p class="review-text">"Sofía es una artista con los tintes y las permanentes. Me dejó unos rizos muy naturales y bien definidos. La mejor atención del pueblo."</p>
+              </div>
+              <div class="review-user-info">
+                <div class="review-avatar">LG</div>
+                <div class="review-user-details">
+                  <h4>Lucas Gómez</h4>
+                  <p>Almorox</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="glass-card review-slide-card">
+              <div>
+                <div class="review-rating" aria-label="Calificación 5 de 5 estrellas">
+                  ★ ★ ★ ★ ★
+                </div>
+                <p class="review-text">"El corte y barba por 15€ es imbatible. El perfilado a navaja queda super limpio y te atienden rápido. 100% recomendado."</p>
+              </div>
+              <div class="review-user-info">
+                <div class="review-avatar">DS</div>
+                <div class="review-user-details">
+                  <h4>Dani Sánchez</h4>
+                  <p>Maqueda</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="glass-card review-slide-card">
+              <div>
+                <div class="review-rating" aria-label="Calificación 5 de 5 estrellas">
+                  ★ ★ ★ ★ ★
+                </div>
+                <p class="review-text">"Muy cómodo poder reservar la cita online desde el móvil sin tener que estar llamando. Llegas y te atienden enseguida. Gran servicio."</p>
+              </div>
+              <div class="review-user-info">
+                <div class="review-avatar">MR</div>
+                <div class="review-user-details">
+                  <h4>Marcos Ruiz</h4>
+                  <p>Escalona</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="carousel-dots" id="carouselDots">
+            <!-- Rellenado dinámicamente en JavaScript -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECCIÓN DE CONTACTO
+         ========================================== -->
+    <section id="contacto" class="section-padding" aria-label="Información de contacto">
+      <div class="container contact-grid">
+        
+        <div class="contact-info-list">
+          <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
+            <h2 class="glow-text"><span class="gradient-text">¿Hablamos?</span></h2>
+            <p style="margin: 0;">Pásate por la barbería o escríbenos para reservar tu hueco.</p>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="cii-icon">📍</div>
+            <div class="cii-text">
+              <h4>Ubicación</h4>
+              <p>N 403 A49 (Junto a La Despensa)<br>45910 Escalona (Toledo)</p>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="cii-icon">📞</div>
+            <div class="cii-text">
+              <h4>Teléfono y WhatsApp</h4>
+              <p>+34 603 611 722</p>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="cii-icon">🕒</div>
+            <div class="cii-text">
+              <h4>Horario de Apertura</h4>
+              <p>Lunes a Sábado: 10:00 - 21:00<br>Domingos: Cerrado por descanso</p>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="cii-icon">🎵</div>
+            <div class="cii-text">
+              <h4>Síguenos en TikTok</h4>
+              <p><a href="https://www.tiktok.com/@barber_shop_elcastillo" target="_blank" rel="noopener noreferrer" style="color: var(--secondary-neon); text-decoration: underline;">barber_shop_el castillo</a></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mapa visual e interactivo simulado en la web -->
+        <div class="glass-card map-container">
+          <div class="map-placeholder">
+            <div class="map-grid-overlay"></div>
+            <div class="map-streets"></div>
+            <div class="map-streets-2"></div>
+            
+            <div class="map-pin">
+              📍
+              <div class="map-pin-pulse"></div>
+            </div>
+            
+            <div class="map-location-tag">
+              <h4>Barber Shop El Castillo</h4>
+              <p>Junto al supermercado La Despensa</p>
+            </div>
+
+            <a href="https://maps.google.com/?q=La+Despensa+Escalona+Toledo" target="_blank" rel="noopener noreferrer" class="btn btn-secondary map-btn-link" id="googleMapsBtn">
+              Ver en Google Maps
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
+  <footer class="footer" aria-label="Pie de página">
+    <div class="container">
+      <div class="footer-top">
+        
+        <div class="footer-about">
+          <a href="#inicio" class="logo">
+            <span>BARBER SHOP</span> EL CASTILLO
+            <div class="logo-dot"></div>
+          </a>
+          <p>Tu barbería de confianza en Escalona (Toledo). Los mejores cortes con degradado y perfilado de barba con el mejor trato.</p>
+          <div class="social-links">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Síguenos en Instagram">📸</a>
+            <a href="https://www.tiktok.com/@barber_shop_elcastillo" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Síguenos en TikTok" title="barber_shop_el castillo">🎵</a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Síguenos en Facebook">👥</a>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h3>Navegación</h3>
+          <ul class="footer-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#galeria">Galería</a></li>
+            <li><a href="#reservar">Reservar Cita</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>Especialidades</h3>
+          <ul class="footer-links">
+            <li><a href="#servicios">Corte con Degradado</a></li>
+            <li><a href="#servicios">Corte más Barba</a></li>
+            <li><a href="#servicios">Perfilado de Cejas</a></li>
+            <li><a href="#servicios">Tinte y Permanente</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>Horario</h3>
+          <ul class="footer-hours-list">
+            <li><span>Lun - Sáb:</span> <span>10:00 - 21:00</span></li>
+            <li><span>Domingo:</span> <span style="color: var(--accent-pink);">Cerrado</span></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Barber Shop El Castillo. Todos los derechos reservados. Diseñado con estilo en Escalona, Toledo.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botón WhatsApp Flotante -->
+  <a href="https://wa.me/34603611722?text=Hola,%20quiero%20reservar%20una%20cita%20en%20Barber%20Shop%20El%20Castillo" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Escríbenos por WhatsApp" id="whatsappFloatBtn">
+    <div class="whatsapp-pulse"></div>
+    <!-- Simple SVG para icono WhatsApp -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 0 0 1.333 4.982L2 22l5.202-1.362a9.92 9.92 0 0 0 4.808 1.246h.005c5.507 0 9.99-4.478 9.99-9.987C22.005 6.479 17.521 2 12.012 2zm5.727 14.129c-.25.703-1.458 1.371-2.008 1.458-.5.078-1.155.078-3.342-.828-2.797-1.162-4.606-4.004-4.747-4.191-.14-.188-1.144-1.522-1.144-2.906 0-1.385.727-2.062.984-2.344.258-.281.562-.352.75-.352.188 0 .375.002.539.01.173.008.406-.064.633.483.228.549.779 1.902.846 2.039.068.136.113.295.023.479-.09.183-.135.295-.272.457-.136.162-.288.361-.41.484-.136.136-.279.285-.121.558.158.273.702 1.157 1.503 1.87 1.031.918 1.897 1.203 2.164 1.34.266.136.422.113.578-.067.156-.18.672-.781.852-1.047.18-.266.36-.223.606-.133.246.09 1.567.738 1.836.873.27.135.45.203.516.316.066.113.066.653-.184 1.356z"/></svg>
+  </a>
+
+  <!-- Lógica interactiva en JavaScript -->
+  <script src="app.js"></script>
+</body>
+</html>

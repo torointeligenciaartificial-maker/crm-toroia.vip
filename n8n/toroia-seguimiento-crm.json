@@ -1,0 +1,215 @@
+{
+  "name": "Toroia - Seguimiento CRM Automático",
+  "nodes": [
+    {
+      "id": "trigger-15min",
+      "name": "Trigger - Cada 15 min",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [0, 0],
+      "parameters": {
+        "rule": {
+          "interval": [{ "field": "minutes", "minutesInterval": 15 }]
+        }
+      }
+    },
+    {
+      "id": "notion-leer-prioritarios",
+      "name": "Notion - Leer Prioritarios",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [240, 0],
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "getAll",
+        "databaseId": {
+          "__rl": true,
+          "value": "99bae6ce-57a4-4bf8-ab9c-179ce289fe4e",
+          "mode": "id"
+        },
+        "returnAll": true,
+        "filterType": "manual",
+        "filters": {
+          "conditions": [
+            {
+              "key": "Estado|select",
+              "condition": "equals",
+              "value": "📤 Enviado"
+            }
+          ]
+        }
+      },
+      "credentials": {
+        "notionApi": {
+          "id": "",
+          "name": "Notion - Toroia CRM"
+        }
+      }
+    },
+    {
+      "id": "if-followup-vencido",
+      "name": "IF - Follow-up vencido (48h)",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [480, 0],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "cond-fecha-contacto",
+              "leftValue": "={{ $json['Fecha Contacto'] }}",
+              "rightValue": "={{ $now.minus({ hours: 48 }).toISO() }}",
+              "operator": { "type": "dateTime", "operation": "before" }
+            },
+            {
+              "id": "cond-sin-seguimiento",
+              "leftValue": "={{ $json['Fecha Seguimiento'] }}",
+              "rightValue": "",
+              "operator": { "type": "string", "operation": "empty", "singleValue": true }
+            }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "switch-por-canal",
+      "name": "Switch - Por Canal",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [720, 0],
+      "parameters": {
+        "mode": "rules",
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": { "caseSensitive": true, "typeValidation": "loose", "version": 2 },
+                "combinator": "and",
+                "conditions": [
+                  {
+                    "id": "cond-canal-whatsapp",
+                    "leftValue": "={{ $json['Canal'] }}",
+                    "rightValue": "WhatsApp",
+                    "operator": { "type": "string", "operation": "equals" }
+                  }
+                ]
+              },
+              "renameOutput": true,
+              "outputKey": "WhatsApp"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "Email/Otro"
+        }
+      }
+    },
+    {
+      "id": "gmail-enviar-followup",
+      "name": "Gmail - Enviar Follow-up",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [960, -80],
+      "parameters": {
+        "resource": "message",
+        "operation": "send",
+        "sendTo": "={{ $json['Email'] }}",
+        "subject": "={{ 'Seguimiento - ' + $json['Empresa'] }}",
+        "emailType": "text",
+        "message": "=Hola {{ $json['Nombre Contacto'] || $json['Empresa'] }},\n\nTe escribí hace unos días sobre cómo Toroia puede ayudar a {{ $json['Empresa'] }} en el sector {{ $json['Sector'] }}. ¿Tuviste ocasión de revisarlo?\n\nQuedo atento/a a cualquier duda.\n\nUn saludo,\nToroia",
+        "options": {}
+      },
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "",
+          "name": "Gmail - Toroia"
+        }
+      }
+    },
+    {
+      "id": "whatsapp-enviar-followup",
+      "name": "WhatsApp - Enviar Follow-up",
+      "type": "n8n-nodes-base.whatsApp",
+      "typeVersion": 1,
+      "position": [960, 80],
+      "parameters": {
+        "resource": "message",
+        "operation": "send",
+        "recipientPhoneNumber": "={{ $json['Teléfono'] }}",
+        "textBody": "=Hola {{ $json['Nombre Contacto'] || $json['Empresa'] }}, soy de Toroia 👋. Te escribí hace unos días sobre {{ $json['Empresa'] }}, ¿pudiste verlo? Quedo atento/a."
+      },
+      "credentials": {
+        "whatsAppApi": {
+          "id": "",
+          "name": "WhatsApp Business - Toroia"
+        }
+      }
+    },
+    {
+      "id": "notion-actualizar-seguimiento",
+      "name": "Notion - Actualizar Fecha Seguimiento",
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [1200, 0],
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "update",
+        "pageId": {
+          "__rl": true,
+          "value": "={{ $('Notion - Leer Prioritarios').item.json.id }}",
+          "mode": "id"
+        },
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "Fecha Seguimiento|date",
+              "date": "={{ $now.toISO() }}"
+            }
+          ]
+        }
+      },
+      "credentials": {
+        "notionApi": {
+          "id": "",
+          "name": "Notion - Toroia CRM"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Trigger - Cada 15 min": {
+      "main": [[{ "node": "Notion - Leer Prioritarios", "type": "main", "index": 0 }]]
+    },
+    "Notion - Leer Prioritarios": {
+      "main": [[{ "node": "IF - Follow-up vencido (48h)", "type": "main", "index": 0 }]]
+    },
+    "IF - Follow-up vencido (48h)": {
+      "main": [
+        [{ "node": "Switch - Por Canal", "type": "main", "index": 0 }]
+      ]
+    },
+    "Switch - Por Canal": {
+      "main": [
+        [{ "node": "WhatsApp - Enviar Follow-up", "type": "main", "index": 0 }],
+        [{ "node": "Gmail - Enviar Follow-up", "type": "main", "index": 0 }]
+      ]
+    },
+    "Gmail - Enviar Follow-up": {
+      "main": [[{ "node": "Notion - Actualizar Fecha Seguimiento", "type": "main", "index": 0 }]]
+    },
+    "WhatsApp - Enviar Follow-up": {
+      "main": [[{ "node": "Notion - Actualizar Fecha Seguimiento", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

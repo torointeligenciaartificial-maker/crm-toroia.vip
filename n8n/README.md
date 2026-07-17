@@ -37,7 +37,25 @@ nodo IF comprueba también que `Fecha Seguimiento` esté vacía (además de `Fec
 
 ### Importar
 
-`n8n → Workflows → ⋯ → Import from File` y selecciona `toroia-seguimiento-crm.json`.
+**Opción A — manual:** `n8n → Workflows → ⋯ → Import from File` y selecciona `toroia-seguimiento-crm.json`.
+
+**Opción B — por API**, usando los scripts en `n8n/scripts/` (útil si nadie va a abrir la UI
+todavía). Requieren una API key de n8n (`Settings → n8n API → Create an API key`) y que ejecutes
+los comandos desde una máquina que sí tenga salida de red hacia tu instancia:
+
+```bash
+cd n8n/scripts
+N8N_API_KEY="tu-api-key" ./import-workflow.sh
+# crea la credencial de Notion (API key estática, no requiere OAuth):
+N8N_API_KEY="tu-api-key" NOTION_INTEGRATION_SECRET="secret_xxx" ./create-notion-credential.sh
+# tras asignar credenciales en la UI a Gmail/WhatsApp, activa el workflow:
+N8N_API_KEY="tu-api-key" WORKFLOW_ID="<id devuelto por import-workflow.sh>" ./activate-workflow.sh
+```
+
+La API de n8n puede importar el workflow y crear la credencial de Notion (usa una API key
+estática), pero **no puede completar el login OAuth2 de Gmail ni el alta de WhatsApp Business** —
+eso exige el consentimiento interactivo en el navegador, así que esos dos siguen siendo manuales
+en la UI tras la importación.
 
 ### Credenciales a configurar en n8n (no puedo crearlas yo — necesito acceso a tu instancia)
 

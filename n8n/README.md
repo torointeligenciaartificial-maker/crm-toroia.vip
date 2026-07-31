@@ -81,6 +81,21 @@ No hace falta "ejecutar ahora" por API — la API pública de n8n no expone ese 
 Schedule Trigger ya está activo cada 15 min, basta con esperar al próximo tick (o pulsar tú mismo
 **Execute workflow** en el editor para verlo al instante).
 
+### Validado en producción (workflow id `kCduUVOpq2bBI5cD`)
+
+Confirmado con datos reales el 31/07/2026: tras aplicar el patch de arriba, con un lead de
+prueba (`Fecha Contacto` forzada a >48h), `Fecha Seguimiento` se actualizó en el registro correcto
+y el email de seguimiento llegó a la bandeja. También se comparó el `connections` real del
+workflow (vía `GET /api/v1/workflows/{id}`) contra este repo: coincide exactamente en el nodo
+`Notion - Actualizar Fecha Seguimiento` (en paralelo del Switch, ambas salidas) y en `pageId`.
+
+Única diferencia, intencional: en producción, la salida `WhatsApp` del Switch apunta a un nodo
+`If` inerte en vez de a `WhatsApp - Enviar Follow-up`, como workaround temporal mientras no exista
+credencial de WhatsApp Business (ver sección de credenciales más abajo). El JSON de este repo
+mantiene el nodo `WhatsApp - Enviar Follow-up` real como diseño objetivo para cuando esa
+credencial exista; si reimportas desde el repo, recuerda repetir ese desvío en producción (o
+simplemente no activar esa rama) hasta entonces.
+
 ### Importar
 
 **Opción A — manual:** `n8n → Workflows → ⋯ → Import from File` y selecciona `toroia-seguimiento-crm.json`.

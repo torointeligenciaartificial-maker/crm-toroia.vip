@@ -66,6 +66,21 @@ Notion sin tocar, con su `id` propio — y `pageId = {{ $json.id }}` es correcto
 paralelo al envío, no "solo si el envío tuvo éxito"; para eso haría falta un nodo Merge, pendiente
 como mejora futura, no bloqueante para esta campaña.
 
+**Para aplicar este arreglo sobre un workflow que ya está importado y activo en n8n** (en vez de
+reimportarlo entero, lo que pisaría las credenciales que ya hayas asignado a mano en la UI), usa
+`n8n/scripts/fix-notion-update-connections.ps1`: lee la definición real del workflow por su
+nombre, parchea solo las conexiones de "Notion - Actualizar Fecha Seguimiento" y confirma el
+`pageId`, y guarda de vuelta sin tocar nada más.
+
+```powershell
+cd n8n\scripts
+.\fix-notion-update-connections.ps1 -N8nApiKey "tu-api-key"
+```
+
+No hace falta "ejecutar ahora" por API — la API pública de n8n no expone ese endpoint. Como el
+Schedule Trigger ya está activo cada 15 min, basta con esperar al próximo tick (o pulsar tú mismo
+**Execute workflow** en el editor para verlo al instante).
+
 ### Importar
 
 **Opción A — manual:** `n8n → Workflows → ⋯ → Import from File` y selecciona `toroia-seguimiento-crm.json`.

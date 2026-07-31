@@ -57,6 +57,19 @@ estática), pero **no puede completar el login OAuth2 de Gmail ni el alta de Wha
 eso exige el consentimiento interactivo en el navegador, así que esos dos siguen siendo manuales
 en la UI tras la importación.
 
+**Windows sin Git Bash/WSL:** usa los mismos scripts en versión PowerShell
+(`import-workflow.ps1`, `create-notion-credential.ps1`, `activate-workflow.ps1`):
+
+```powershell
+cd n8n\scripts
+.\import-workflow.ps1 -N8nApiKey "tu-api-key"
+.\create-notion-credential.ps1 -N8nApiKey "tu-api-key" -NotionIntegrationSecret "secret_xxx"
+.\activate-workflow.ps1 -N8nApiKey "tu-api-key" -WorkflowId "<id devuelto por import-workflow.ps1>"
+```
+
+Si PowerShell bloquea la ejecución de scripts locales, ejecuta antes (en esa misma sesión):
+`Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass`.
+
 ### Credenciales a configurar en n8n (no puedo crearlas yo — necesito acceso a tu instancia)
 
 - **Notion API** (nodos "Notion - Leer Prioritarios" y "Notion - Actualizar Fecha Seguimiento"):

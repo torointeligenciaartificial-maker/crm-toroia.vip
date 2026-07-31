@@ -35,6 +35,37 @@ También añade una condición que el JSON original no tenía: sin ella, cada le
 seguiría dentro del filtro y **reenviaría el follow-up cada 15 minutos para siempre**. Por eso el
 nodo IF comprueba también que `Fecha Seguimiento` esté vacía (además de `Fecha Contacto` > 48h).
 
+### Historial: cómo se llegó a la conexión actual del nodo "Notion - Actualizar Fecha Seguimiento"
+
+Este workflow tuvo un bug real en producción (documentado en el traspaso de campaña, sección 5):
+el nodo final actualizaba siempre la misma página de Notion ("GES-On Asesoría") sin importar qué
+lead se estuviera procesando. Dos intentos de arreglo y por qué el segundo tampoco bastaba:
+
+1. **`{{ $('Notion - Leer Prioritarios').item.json.id }}`** (referencia hacia atrás por nombre de
+   nodo): depende de que n8n mantenga la cadena de `pairedItem` a través de todos los nodos
+   intermedios. El nodo **IF** de este flujo no la propaga de forma fiable, así que la expresión
+   caía en el fallback silencioso de n8n al **índice 0** del array de salida de "Notion - Leer
+   Prioritarios" — de ahí que siempre resolviera al mismo registro fijo, sin lanzar ningún error.
+2. **`{{ $json.id }}`** justo después de Gmail/WhatsApp: tampoco funciona, porque esos nodos
+   sustituyen el JSON del item por su propia respuesta (id de mensaje/thread de Gmail, no la
+   página de Notion) — el campo `id` en ese punto ya no es el de Notion.
+
+**Fix aplicado:** en vez de depender de cualquier referencia hacia atrás, "Notion - Actualizar
+Fecha Seguimiento" cuelga **en paralelo, directamente del nodo Switch** (no de Gmail/WhatsApp):
+
+```
+Switch ─┬─→ WhatsApp - Enviar Follow-up
+        ├─→ Gmail - Enviar Follow-up
+        ├─→ Notion - Actualizar Fecha Seguimiento   (rama WhatsApp)
+        └─→ Notion - Actualizar Fecha Seguimiento   (rama Email/Otro)
+```
+
+Así, `$json` en el nodo de actualización es siempre el item que salió del Switch — el lead de
+Notion sin tocar, con su `id` propio — y `pageId = {{ $json.id }}` es correcto sin depender de
+`pairedItem` ni de índices. Trade-off aceptado: la actualización de `Fecha Seguimiento` ocurre en
+paralelo al envío, no "solo si el envío tuvo éxito"; para eso haría falta un nodo Merge, pendiente
+como mejora futura, no bloqueante para esta campaña.
+
 ### Importar
 
 **Opción A — manual:** `n8n → Workflows → ⋯ → Import from File` y selecciona `toroia-seguimiento-crm.json`.

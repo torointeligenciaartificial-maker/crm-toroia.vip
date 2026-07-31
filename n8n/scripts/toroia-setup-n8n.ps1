@@ -184,7 +184,7 @@ $workflowJsonRaw = @'
         "operation": "update",
         "pageId": {
           "__rl": true,
-          "value": "={{ $('Notion - Leer Prioritarios').item.json.id }}",
+          "value": "={{ $json.id }}",
           "mode": "id"
         },
         "propertiesUi": {
@@ -210,15 +210,15 @@ $workflowJsonRaw = @'
     },
     "Switch - Por Canal": {
       "main": [
-        [{ "node": "WhatsApp - Enviar Follow-up", "type": "main", "index": 0 }],
-        [{ "node": "Gmail - Enviar Follow-up", "type": "main", "index": 0 }]
+        [
+          { "node": "WhatsApp - Enviar Follow-up", "type": "main", "index": 0 },
+          { "node": "Notion - Actualizar Fecha Seguimiento", "type": "main", "index": 0 }
+        ],
+        [
+          { "node": "Gmail - Enviar Follow-up", "type": "main", "index": 0 },
+          { "node": "Notion - Actualizar Fecha Seguimiento", "type": "main", "index": 0 }
+        ]
       ]
-    },
-    "Gmail - Enviar Follow-up": {
-      "main": [[{ "node": "Notion - Actualizar Fecha Seguimiento", "type": "main", "index": 0 }]]
-    },
-    "WhatsApp - Enviar Follow-up": {
-      "main": [[{ "node": "Notion - Actualizar Fecha Seguimiento", "type": "main", "index": 0 }]]
     }
   },
   "settings": { "executionOrder": "v1" }
